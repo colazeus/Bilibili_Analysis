@@ -4,5 +4,5 @@ module.export = {
   //输出目录
   outputDir: "dist",
   assetsDir: "static",
-  indexPath: "index.html",
+  indexPath: "index.html"
 }
