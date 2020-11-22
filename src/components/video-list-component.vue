@@ -56,7 +56,7 @@ export default {
   },
   mounted: function() {
     var listdata = [{
-        videoName: '现在提起key社的三大催泪作品',
+        videoName: '现在提起key社的三大催泪作品之一',
         crateTime: "2020-10-12 10:10",
         upName: "Byangde",
         videoImage: 'https://i2.hdslb.com/bfs/archive/b1cc2f5d3f105111d591b8f5bbdb8dd4ad290015.jpg'
