@@ -9,7 +9,7 @@
   <el-col :span="6">
     <el-card class="box-card">
       <div class="title">总计点击量</div>
-      <div class="number">32</div>
+      <div class="number">33</div>
     </el-card>
   </el-col>
   <el-col :span="6">
