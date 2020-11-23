@@ -17,6 +17,8 @@ Vue.component('video-list',VideoList)
 Vue.use(VCharts)
 Vue.use(VueFab)
 
+console.log(process.env.VUE_APP_ENV);
+
 Vue.prototype.$api = api;
 
 new Vue({
