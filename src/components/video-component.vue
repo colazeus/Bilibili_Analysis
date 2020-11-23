@@ -1,9 +1,9 @@
 <template>
 <el-card :body-style="{ padding: '0px' }">
-  <img v-bind:src="videoImage" class="image">
+  <img v-bind:src="pic" class="image">
   <div style="padding: 14px;">
-    <span>{{videoName}}</span>
-    <div class="time">{{crateTime}}<span @click="clickUp">{{upName}}</span></div>
+    <span>{{title}}</span>
+    <div class="time">{{creat_time}}<span @click="clickUp">{{upName}}</span></div>
     <div class="param-list">
       <span><icon-svg icon-class="bl-icon-zan" />{{num[0]}}</span>
       <span><icon-svg icon-class="bl-icon-Bbi" />{{num[1]}}</span>
@@ -23,9 +23,9 @@ export default {
     }
   },
   props: {
-    videoName:String,
-    videoImage:String,
-    crateTime:String,
+    title:String,
+    pic:String,
+    creat_time:String,
     upName:String,
     num:{
       type:Array,

@@ -1,9 +1,8 @@
-import {
-  get,
-  post
-} from './request';
+import http from './http'
 
-//登陆
-export const login = (login) => post('/api/post/user/login', login)
-//上传
-export const upload = (upload) => get('/api/get/upload', upload)
+//获取视频列表
+export default {
+  getVideoList(data){
+    return http.get("/video/getlist",data)
+  }
+}

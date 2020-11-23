@@ -1,8 +1,19 @@
-module.export = {
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  },
   publicPath: "./",
-  baseUrl: "./",
   //输出目录
-  outputDir: "dist",
   assetsDir: "static",
-  indexPath: "index.html"
+  indexPath: "index.html",
+  runtimeCompiler: true,
+  productionSourceMap: false,
 }

@@ -34,8 +34,8 @@ export default {
       }
     }
   },
-  methods:{
-    addList: function(listdata){
+  methods: {
+    addList: function(listdata) {
       for (var i = 0; i < listdata.length; i++) {
         switch (i % 4) {
           case 0:
@@ -55,14 +55,14 @@ export default {
     }
   },
   mounted: function() {
-    var listdata = [{
-        videoName: '现在提起key社的三大催泪作品之一',
-        crateTime: "2020-10-12 10:10",
-        upName: "Byangde",
-        videoImage: 'https://i2.hdslb.com/bfs/archive/b1cc2f5d3f105111d591b8f5bbdb8dd4ad290015.jpg'
-      },
-    ]
-    this.addList(listdata);
+    this.$api.getVideoList().then(res => {
+      res = res['data']
+      var listdata = res['data'];
+      this.addList(listdata);
+      console.log(listdata);
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 }
 </script>
