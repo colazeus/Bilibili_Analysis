@@ -5,6 +5,18 @@ import QS from 'qs'
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+axios.interceptors.response.use(
+  response => {
+    if (response.status === 200) {
+      return Promise.resolve(response['data']);
+    }else{
+      return Promise.reject(response);
+    }
+  },
+  error => {
+    return Promise.reject(error.response.status);
+  }
+)
 
 function apiAxios(method, url, params) {
   return axios({
@@ -21,11 +33,5 @@ export default {
   },
   post: function (url, params) {
     return apiAxios('POST', url, params)
-  },
-  put: function (url, params) {
-    return apiAxios('PUT', url, params)
-  },
-  delete: function (url, params) {
-    return apiAxios('DELETE', url, params)
-  },
+  }
 }

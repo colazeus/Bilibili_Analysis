@@ -56,11 +56,8 @@ export default {
   },
   mounted: function() {
     this.$api.getVideoList().then(res => {
-      console.log(res);
-      res = res['data']
       var listdata = res['data'];
       this.addList(listdata);
-      console.log(listdata);
     }).catch((err) => {
       console.log(err)
     })
