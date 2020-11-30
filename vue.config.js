@@ -27,6 +27,12 @@ module.exports = {
       test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
       threshold: 10240,
       minRatio: 0.8
-    }))
+    }));
+    if(isProduction){
+      config.externals = {
+        'vue' : 'Vue',
+        'vue-router': 'VueRouter',
+      }
+    }
   }
 }
