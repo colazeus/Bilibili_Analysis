@@ -11,13 +11,6 @@ module.exports = {
         pathRewrite: {
           '^/devapi': ''
         }
-      },
-      '/proapi':{
-        target: 'http://api.bilibilianalysis.com',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/proapi': ''
-        }
       }
     }
   },
