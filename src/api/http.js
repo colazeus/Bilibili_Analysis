@@ -10,6 +10,7 @@ axios.interceptors.response.use(
     if (response.status === 200) {
       return Promise.resolve(response['data']);
     }else{
+      console.log(response['data']['code']+":"+response['data']['message']);
       return Promise.reject(response);
     }
   },

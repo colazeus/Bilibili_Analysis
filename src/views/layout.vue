@@ -2,8 +2,8 @@
 <el-container>
   <el-header>
     <el-container>
-        <img src="../assets/logo.jpeg" style="height:50px;padding:5px">
-        <icon-svg icon-class="bl-icon-bilibili" />
+      <img src="../assets/logo.jpeg" style="height:50px;padding:5px">
+      <icon-svg icon-class="bl-icon-bilibili" />
     </el-container>
   </el-header>
   <el-container>
@@ -20,7 +20,7 @@
       </el-menu>
     </el-aside>
     <el-main>
-      <router-view></router-view>
+      <router-view v-if="isRouterAlive" @showMessage="showMessage"></router-view>
     </el-main>
   </el-container>
 </el-container>
@@ -29,10 +29,33 @@
 <script>
 export default {
   name: 'layout',
-  data() {
-    return {}
+  provide () {
+    return {
+      reload: this.reload,
+      showMessage: this.showMessage
+    }
   },
-  methods: {}
+  data() {
+    return {
+      isRouterAlive: true
+    }
+  },
+  methods: {
+    showMessage($msg) {
+      const h = this.$createElement;
+
+      this.$notify({
+        title: '标题名称',
+        message: h('i', {
+          style: 'color: teal'
+        }, $msg)
+      });
+    },
+    reload () {
+      this.isRouterAlive = false
+      this.$nextTick(() => (this.isRouterAlive = true))
+    }
+  }
 }
 </script>
 
@@ -59,7 +82,7 @@ body {
   height: 60px;
 }
 
-.el-header svg{
+.el-header svg {
   font-size: 4em;
   color: #409EFF;
 }
@@ -71,11 +94,11 @@ body {
 
 .el-aside .el-menu {
   height: 100%;
-  border-right:0px;
+  border-right: 0px;
 }
 
-.el-main{
-  padding:40px;
+.el-main {
+  padding: 40px;
 }
 
 #nav {

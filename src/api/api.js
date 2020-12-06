@@ -4,5 +4,11 @@ import http from './http'
 export default {
   getVideoList(data){
     return http.get("/video/getlist",data)
+  },
+  getVideoInfo(bvid){
+    return http.get("/video/getVideoInfo",{"bvid":bvid});
+  },
+  saveVideo(data){
+    return http.post("/video/saveVideo",data);
   }
 }

@@ -5,11 +5,18 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   devServer: {
     proxy: {
-      '/api': {
+      '/devapi': {
         target: 'http://127.0.0.1',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/devapi': ''
+        }
+      },
+      '/proapi':{
+        target: 'http://api.bilibilianalysis.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/proapi': ''
         }
       }
     }
@@ -28,11 +35,9 @@ module.exports = {
       threshold: 10240,
       minRatio: 0.8
     }));
-    if(isProduction){
-      config.externals = {
+    config.externals = {
         'vue' : 'Vue',
         'vue-router': 'VueRouter',
-      }
     }
   }
 }

@@ -57,10 +57,17 @@ export default {
   mounted: function() {
     this.$api.getVideoList().then(res => {
       var listdata = res['data'];
+      console.log(res);
       this.addList(listdata);
     }).catch((err) => {
-      console.log(err)
+      console.log(err);
     })
   }
 }
 </script>
+
+<style>
+.el-card{
+  margin-top:25px;
+}
+</style>

@@ -12,15 +12,38 @@ import VideoList from './components/video-list-component'
 
 Vue.config.productionTip = false
 Vue.component('icon-svg', IconSvg)
-Vue.component('video-card',VideoCard)
-Vue.component('video-list',VideoList)
+Vue.component('video-card', VideoCard)
+Vue.component('video-list', VideoList)
 //Vue.use(VCharts)
 Vue.use(VueFab)
 
 Vue.prototype.$api = api;
 
+Vue.filter('formatData', function(value) {
+  if (!value) return '';
+  return value.substring(0, 16);
+})
+
+Vue.filter('formatNum', function(value) {
+  if (!value) return '';
+  var param = {};
+  var k = 10000,
+    sizes = ['', '万', '亿', '万亿'],
+    i;
+  if (value < k) {
+    param.value = value
+    param.unit = ''
+  } else {
+    i = Math.floor(Math.log(value) / Math.log(k));
+
+    param.value = ((value / Math.pow(k, i))).toFixed(2);
+    param.unit = sizes[i];
+  }
+  return param.value + param.unit;
+})
+
 new Vue({
-    router,
-    store,
-    render: h => h(App)
+  router,
+  store,
+  render: h => h(App)
 }).$mount('#app')

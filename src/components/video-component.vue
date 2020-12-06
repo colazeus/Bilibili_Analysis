@@ -3,12 +3,13 @@
   <img v-bind:src="pic" class="image">
   <div style="padding: 14px;">
     <span>{{title}}</span>
-    <div class="time">{{creat_time}}<span @click="clickUp">{{upName}}</span></div>
+    <div class="time">{{create_time | formatData}} <span @click="clickUp">{{owner_name}}</span></div>
+    <div class="view"> {{v_view | formatNum}}播放 · {{v_danmaku | formatNum}}弹幕</div>
     <div class="param-list">
-      <span><icon-svg icon-class="bl-icon-zan" />{{num[0]}}</span>
-      <span><icon-svg icon-class="bl-icon-Bbi" />{{num[1]}}</span>
-      <span><icon-svg icon-class="bl-icon-shoucang" />{{num[2]}}</span>
-      <span><icon-svg icon-class="bl-icon-fenxiang" />{{num[3]}}</span>
+      <span><icon-svg icon-class="bl-icon-zan" />{{v_like | formatNum}}</span>
+      <span><icon-svg icon-class="bl-icon-Bbi" />{{v_coin | formatNum}}</span>
+      <span><icon-svg icon-class="bl-icon-shoucang" />{{v_favorite | formatNum}}</span>
+      <span><icon-svg icon-class="bl-icon-fenxiang" />{{v_share | formatNum}}</span>
     </div>
   </div>
 </el-card>
@@ -25,14 +26,14 @@ export default {
   props: {
     title:String,
     pic:String,
-    creat_time:String,
-    upName:String,
-    num:{
-      type:Array,
-      default() {
-        return [0,0,0,0];
-      }
-    }
+    create_time:String,
+    owner_name:String,
+    v_like:String,
+    v_coin:String,
+    v_favorite:String,
+    v_share:String,
+    v_view:String,
+    v_danmaku:String,
   },
   methods: {
     clickUp: function() {
@@ -40,3 +41,44 @@ export default {
   }
 }
 </script>
+
+<style>
+.el-card .image {
+  width: 100%;
+  display: block;
+}
+
+.el-card .time {
+  color: #969696;
+  font-size: 0.9em;
+  margin-top: 8px;
+}
+
+.el-card .time span {
+  margin-top:6px;
+  color: #409EFF;
+  cursor: pointer;
+  padding-left: 8px;
+}
+
+.el-card .view{
+  color: #969696;
+  font-size: 0.8em;
+  margin-top: 8px;
+}
+
+.param-list {
+  border-top: 1px solid #ebeef5;
+  margin-top: 10px;
+  padding-top: 12px;
+}
+
+.param-list span {
+  margin-right:12px;
+  font-size:0.9em;
+}
+
+.param-list svg {
+  margin-right: 4px;
+}
+</style>
