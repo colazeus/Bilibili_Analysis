@@ -24,11 +24,11 @@
     <el-form :model="newVideo" ref="newVideo" label-width="120px" class="video-form">
       <el-form-item label="监控持续时间" prop="expiration">
         <el-radio-group v-model="newVideo.expiration" size="medium">
-          <el-radio-button label="不监控"></el-radio-button>
-          <el-radio-button label="1天"></el-radio-button>
-          <el-radio-button label="3天"></el-radio-button>
-          <el-radio-button label="7天"></el-radio-button>
-          <el-radio-button label="自动"></el-radio-button>
+          <el-radio-button label=-1>不监控</el-radio-button>
+          <el-radio-button label=1>1天</el-radio-button>
+          <el-radio-button label=3>3天</el-radio-button>
+          <el-radio-button label=7>7天</el-radio-button>
+          <el-radio-button label=0>自动</el-radio-button>
         </el-radio-group>
       </el-form-item>
     </el-form>
@@ -52,7 +52,7 @@ export default {
         url:'',
         title:"视频标题",
         owner:"名称",
-        expiration:"自动"
+        expiration:0
       }
     }
   },
@@ -78,7 +78,7 @@ export default {
     postNewVideoDialog(){
       var data = {
         'bvid': this.newVideo.bvid,
-        'expiration':this.newVideo.expiration
+        'expiration':this.newVideo.expiration,
       };
 
       this.$api.saveVideo(data).then(res => {
@@ -89,14 +89,9 @@ export default {
           this.showMessage(res['message']);
         }
       }).catch((err) => {
-        console.log(err)
+        console.log(err);
       })
-
       this.dialogVisible = false;
-      setTimeout(function(){
-        this.reload();
-      }, 500)
-
     }
   }
 }
