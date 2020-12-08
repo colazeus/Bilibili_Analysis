@@ -10,5 +10,8 @@ export default {
   },
   saveVideo(data){
     return http.post("/video/saveVideo",data);
+  },
+  login(data){
+    return http.post("/login",data);
   }
 }

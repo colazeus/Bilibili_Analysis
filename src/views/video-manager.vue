@@ -66,7 +66,6 @@ export default {
         this.newVideo.title = data['title'];
         this.newVideo.owner = data['owner']['name'];
         this.newVideo.bvid = data['bvid'];
-
       }).catch((err) => {
         console.log(err)
       })

@@ -13,9 +13,10 @@ const routes = [{
   component: getComponent('layout'),
   children: [{
     path: '/',
-    name: 'dashboard',
+    name: '/',
     component: getComponent('dashboard'),
     meta: {
+      auth: true,
       title: '仪表盘'
     }
   },{
@@ -23,13 +24,23 @@ const routes = [{
     name: 'video_manager',
     component: getComponent('video-manager'),
     meta: {
+      auth: true,
       title: '视频管理'
+    }
+  },{
+    path: '/up_manager',
+    name: 'up_manager',
+    component: getComponent('up-manager'),
+    meta: {
+      auth: true,
+      title: 'UP主管理'
     }
   },{
     path: '/404',
     name: '404',
     component: getComponent('404'),
     meta: {
+      auth: false,
       title: '404'
     }
   }
@@ -38,6 +49,7 @@ const routes = [{
   name: 'login',
   component: getComponent('login'),
   meta: {
+    auth: false,
     title: '登录'
   }
 },{
@@ -54,12 +66,14 @@ const router = new VueRouter({
 // 路由跳转前hook
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if (to.meta.title) {
-    document.title = to.meta.title
-  }
-  if (to.matched.length ===0) {  //如果未匹配到路由
+  if(to.meta.auth && !localStorage.getItem('token')){
+    next({path:'/login',query: {redirect: to.fullPath}});
+  } else if (to.matched.length ===0) {  //如果未匹配到路由
     from.name ? next({ path: '/404' }) : next({ path: '/404' });   //如果上级也未匹配到路由则跳转登录页面，如果上级能匹配到则转上级路由
   } else {
+    if (to.meta.title) {
+      document.title = to.meta.title
+    }
     next();    //如果匹配到正确跳转
   }
 })
