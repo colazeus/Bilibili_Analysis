@@ -37,10 +37,10 @@ export default {
           })
         }
         else{
-          this.$message(res['message']);
+          this.$message.error(res['message']);
         }
       }).catch(error => {
-        this.$message(error.message || error.response.data.message);
+        this.$message.error(error.message || error.response.data.message);
       });
     }
   }
