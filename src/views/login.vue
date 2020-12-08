@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       login: {
-        user: '',
+        phone: '',
         password: '',
       }
     }
@@ -30,20 +30,17 @@ export default {
   methods: {
     userLogin() {
       this.$api.login(this.login).then(res =>{
-        this.$store.dispatch("login",res).then(()=>{
-          const path = this.$route.query.redirect || '/';
-          this.$router.push(path);
-        })
+        if(res['code'] == 0){
+          this.$store.dispatch("login",res).then(()=>{
+            const path = this.$route.query.redirect || '/';
+            this.$router.push(path);
+          })
+        }
+        else{
+          this.$message(res['message']);
+        }
       }).catch(error => {
-        // 有错误发生 或 登录失败
-        const h = this.$createElement;
-
-        this.$notify({
-          title: '登录失败',
-          message: h('i', {
-            style: 'color: teal'
-          }, error.message || error.response.data.message)
-        });
+        this.$message(error.message || error.response.data.message);
       });
     }
   }
