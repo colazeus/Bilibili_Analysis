@@ -81,7 +81,7 @@ export default {
 }
 
 .param-list .el-col {
-  font-size: 0.9em;
+  font-size: 0.88em;
 }
 
 .param-list svg {
