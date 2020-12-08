@@ -74,7 +74,7 @@ export default {
 }
 
 .param-list span {
-  margin-right:12px;
+  margin-right:10px;
   font-size:0.9em;
 }
 
