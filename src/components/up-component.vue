@@ -8,7 +8,7 @@
     </el-col>
     <el-col :span="18">
       <div class="info-wrap">
-        <a class="title">{{title}}</a>
+        <a class="title">{{name}}</a>
         <i class="lv icon-lv6"></i>
         <div class="sign"> {{sign | ellipsis(14)}}</div>
         <div class="time">{{create_time | formatData}} <span @click="clickUp">{{owner_name}}</span></div>
@@ -81,7 +81,7 @@ export default {
     }
   },
   props: {
-    title: String,
+    name: String,
     pic: String,
     sign: String,
     create_time: String,
