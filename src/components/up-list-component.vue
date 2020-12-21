@@ -1,23 +1,23 @@
 <template>
 <el-row :gutter="40">
   <el-col :span="6">
-    <video-card v-for="(item, index) in list1" :key="index" v-bind="item"></video-card>
+    <up-card v-for="(item, index) in list1" :key="index" v-bind="item"></up-card>
   </el-col>
   <el-col :span="6">
-    <video-card v-for="(item, index) in list2" :key="index" v-bind="item"></video-card>
+    <up-card v-for="(item, index) in list2" :key="index" v-bind="item"></up-card>
   </el-col>
   <el-col :span="6">
-    <video-card v-for="(item, index) in list3" :key="index" v-bind="item"></video-card>
+    <up-card v-for="(item, index) in list3" :key="index" v-bind="item"></up-card>
   </el-col>
   <el-col :span="6">
-    <video-card v-for="(item, index) in list4" :key="index" v-bind="item"></video-card>
+    <up-card v-for="(item, index) in list4" :key="index" v-bind="item"></up-card>
   </el-col>
 </el-row>
 </template>
 
 <script>
 export default {
-  name: 'video-list',
+  name: 'up-list',
   data() {
     return {
       list1: [],
@@ -49,7 +49,7 @@ export default {
     }
   },
   mounted: function() {
-    this.$api.getVideoList().then(res => {
+    this.$api.getMemberList().then(res => {
       var listdata = res['data'];
       console.log(res);
       this.addList(listdata);
@@ -59,9 +59,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.el-card{
-  margin-top:25px;
-}
-</style>

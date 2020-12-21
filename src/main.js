@@ -9,11 +9,15 @@ import VueFab from 'vue-float-action-button'
 import IconSvg from './components/icon-component'
 import VideoCard from './components/video-component'
 import VideoList from './components/video-list-component'
+import UpCard from './components/up-component'
+import UpList from './components/up-list-component'
 
 Vue.config.productionTip = false
 Vue.component('icon-svg', IconSvg)
 Vue.component('video-card', VideoCard)
 Vue.component('video-list', VideoList)
+Vue.component('up-card', UpCard)
+Vue.component('up-list', UpList)
 //Vue.use(VCharts)
 Vue.use(VueFab)
 
@@ -41,6 +45,15 @@ Vue.filter('formatNum', function(value) {
   }
   return param.value + param.unit;
 })
+
+Vue.filter('ellipsis', function(value,num=32) {
+  if (!value) return '';
+  if (value.length > num) {
+    return value.slice(0, num) + '...';
+  }
+  return value;
+})
+
 
 new Vue({
   router,

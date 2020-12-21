@@ -8,6 +8,9 @@ export default {
   getVideoInfo(bvid){
     return http.get("/video/getVideoInfo",{"bvid":bvid});
   },
+  getMemberList(data){
+    return http.get("/member/getlist",data)
+  },
   saveVideo(data){
     return http.post("/video/saveVideo",data);
   },
