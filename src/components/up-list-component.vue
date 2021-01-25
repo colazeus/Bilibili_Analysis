@@ -1,7 +1,7 @@
 <template>
 <el-row :gutter="40">
   <el-col :span="6">
-    <up-card v-for="(item, index) in list1" :key="index" v-bind="item"></up-card>
+    <up-card @cardClicked="cardClicked($event)" v-for="(item, index) in list1" :key="index" v-bind="item"></up-card>
   </el-col>
   <el-col :span="6">
     <up-card v-for="(item, index) in list2" :key="index" v-bind="item"></up-card>
@@ -46,6 +46,9 @@ export default {
             break;
         }
       }
+    },
+    cardClicked:function(mid) {
+      this.$emit('cardClicked',mid);
     }
   },
   mounted: function() {

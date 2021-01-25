@@ -1,6 +1,6 @@
 <template>
 <el-card :body-style="{ padding: '0px' }">
-  <img v-bind:src="pic" class="image">
+  <img :src="pic" class="image">
   <div style="padding: 14px;">
     <span>{{title}}</span>
     <div class="time">{{create_time | formatData}} <span @click="clickUp">{{owner_name}}</span></div>

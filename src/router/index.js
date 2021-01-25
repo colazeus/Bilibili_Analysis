@@ -36,6 +36,14 @@ const routes = [{
       title: 'UP主管理'
     }
   },{
+    path: '/rank',
+    name: 'rank',
+    component: getComponent('rank'),
+    meta: {
+      auth: true,
+      title: '排行榜'
+    }
+  },{
     path: '/404',
     name: '404',
     component: getComponent('404'),

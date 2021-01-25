@@ -1,5 +1,5 @@
 <template>
-<el-card :body-style="{ padding: '0px' }">
+<el-card @click.native="clickCard(id)" :body-style="{ padding: '0px' }">
   <el-row class="user-item">
     <el-col :span="6">
       <div class="up-face">
@@ -81,6 +81,7 @@ export default {
     }
   },
   props: {
+    id: String,
     name: String,
     pic: String,
     sign: String,
@@ -90,7 +91,10 @@ export default {
     m_view:String,
   },
   methods: {
-    clickUp: function() {}
+    clickUp: function() {},
+    clickCard: function(mid) {
+      this.$emit('cardClicked',mid);
+    }
   }
 }
 </script>

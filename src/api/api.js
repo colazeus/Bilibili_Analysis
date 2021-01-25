@@ -16,5 +16,15 @@ export default {
   },
   login(data){
     return http.post("/user/login",data);
+  },
+  getMemberInfo(mid){
+    return http.get("/member/getInfo",{"mid":mid});
+  },
+  getMemberPopVdeo(mid){
+    return http.get("/member/getVideoList",{"mid":mid});
+  },
+  //周榜
+  getWeekRank(){
+    return http.get("/channel/getSeries");
   }
 }

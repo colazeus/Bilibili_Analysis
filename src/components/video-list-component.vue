@@ -1,5 +1,5 @@
 <template>
-<el-row :gutter="40">
+<el-row class="video-list" :gutter="40">
   <el-col :span="6">
     <video-card v-for="(item, index) in list1" :key="index" v-bind="item"></video-card>
   </el-col>
@@ -62,6 +62,6 @@ export default {
 
 <style>
 .el-card{
-  margin-top:25px;
+  margin-bottom:25px;
 }
 </style>

@@ -24,12 +24,20 @@
           <span slot="title">仪表盘</span>
         </el-menu-item>
         <el-menu-item index="/video_manager">
-          <i class="el-icon-document"></i>
+          <i class="el-icon-video-camera-solid"></i>
           <span slot="title">视频管理</span>
         </el-menu-item>
         <el-menu-item index="/up_manager">
           <i class="el-icon-s-custom"></i>
           <span slot="title">UP主管理</span>
+        </el-menu-item>
+        <el-menu-item index="/rank">
+          <i class="el-icon-s-marketing"></i>
+          <span slot="title">人气排行榜</span>
+        </el-menu-item>
+        <el-menu-item index="/setting">
+          <i class="el-icon-s-tools"></i>
+          <span slot="title">设置</span>
         </el-menu-item>
       </el-menu>
     </el-aside>
